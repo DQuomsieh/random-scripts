@@ -1,0 +1,67 @@
+#!/bin/bash
+while true; do
+
+while true; do
+	echo Please enter an ID number with 4 digits
+	read id
+        	if [[ ${#id} -eq 4 && $id =~ ^[0-9]+$ ]]; then		#Checks if id is 4 numbers and only has digits 
+			break	
+		else
+			echo ERROR: Your ID number must only contain 4 numbers	
+		fi
+done
+
+while true; do		
+	echo Please enter your First name
+	read fname
+	if [[ $fname =~ ^[A-Za-z]+$ ]]; then		#Checks if first name only has characters
+		break
+	else
+		echo ERROR: Your first name must only contain characters
+	fi
+done
+
+while true; do
+	echo Please enter Last name
+	read lname
+	if [[ $lname =~ ^[A-Za-z]+$ ]]; then		#Checks if last name only has characters
+		break
+	else
+		echo ERROR: Your last name must only contain characters
+	fi
+done
+
+	
+while true; do
+	echo Enter your phone number in this format xxx-xxxx
+	read number
+	if [[ "${number:3:1}" == "-" && ${number//-} =~ ^[0-9]+$ ]]; then #Checks if phone number is in correct format and only has digits excluding '-'	
+			break 
+	else
+		echo ERROR: Phone number must only contain numbers
+	fi
+done
+			
+fl=${fname:0:1}
+lastname=${lname:0:1}
+n1=${id:0:1}					  #gets first id number
+n2=${id: -1:1}					  #gets last id number
+email="$fl$lastname$n1$n2@birzeit.edu"		  #makes email
+
+dest=./contacts
+
+echo "Contact ID: $id" >> "$dest"
+echo "Full Name: $fname $lname" >> "$dest"
+echo "Phone Number: $number" >> "$dest"
+echo "Email Address: $email" >> "$dest"
+
+
+echo -e "Press Enter to add another contact or any other key to exit\n"
+
+read var
+
+if [[ "$var" != "" ]]; then
+	echo "Thank you for using our services!"
+	break
+fi
+done
