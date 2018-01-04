@@ -26,6 +26,7 @@ until [ "$optionmain" = "4" ]; do
 			./searchcontacts
 		;;
 		4) 	
+            clear
 			echo "Thank you for using our services"
 			break
 		;;
