@@ -2,6 +2,7 @@
 
 optionmain=0
 until [ "$optionmain" = "4" ]; do
+    clear
 	echo "1) Add Contact"
 	echo "2) Modify Contact"
 	echo "3) Search Contacts"
@@ -10,14 +11,18 @@ until [ "$optionmain" = "4" ]; do
 	echo -n "Please enter your choice: "
 	read optionmain
 	echo ""
+    echo "==============================================="
 	case $optionmain in
 		1)
+            clear
 			./addcontacts
 		;;
 		2)
+            clear
 			./modifycontacts
 		;;
 		3)
+            clear
 			./searchcontacts
 		;;
 		4) 	
@@ -28,3 +33,5 @@ until [ "$optionmain" = "4" ]; do
 		;;
 	esac
 done
+
+
