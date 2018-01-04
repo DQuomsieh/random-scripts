@@ -13,8 +13,14 @@ Master to do
 
 6) Rework entire interface and provide good comments 
 
-7) Work out how git works 
+=======================
+- addcontacts:
+    1. key press after adding and not having to press enter with it
 
-8) Just going to add something here 
 
-9) Adding another thing
+- modifycontacts:
+    1. incorrect input of ID number in "modify contact info" does not yeild error 
+
+- searchcontacts;
+    1. search function returns name of contact with random numbers in front of it
+        - possible issue could be from mapfile comand

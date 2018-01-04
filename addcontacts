@@ -4,6 +4,7 @@ while true; do
 while true; do
 	echo Please enter an ID number with 4 digits
 	read id
+    echo " "
         	if [[ ${#id} -eq 4 && $id =~ ^[0-9]+$ ]]; then		#Checks if id is 4 numbers and only has digits 
 			break	
 		else
@@ -14,6 +15,7 @@ done
 while true; do		
 	echo Please enter your First name
 	read fname
+    echo " "
 	if [[ $fname =~ ^[A-Za-z]+$ ]]; then		#Checks if first name only has characters
 		break
 	else
@@ -24,6 +26,7 @@ done
 while true; do
 	echo Please enter Last name
 	read lname
+    echo " "
 	if [[ $lname =~ ^[A-Za-z]+$ ]]; then		#Checks if last name only has characters
 		break
 	else
@@ -37,6 +40,7 @@ while true; do
 	read number
 	if [[ "${number:3:1}" == "-" && ${number//-} =~ ^[0-9]+$ ]]; then #Checks if phone number is in correct format and only has digits excluding '-'	
 			break 
+    echo " "
 	else
 		echo ERROR: Phone number must only contain numbers
 	fi
@@ -54,14 +58,16 @@ echo "Contact ID: $id" >> "$dest"
 echo "Full Name: $fname $lname" >> "$dest"
 echo "Phone Number: $number" >> "$dest"
 echo "Email Address: $email" >> "$dest"
+echo "--------------------------------"
 
-
-echo -e "Press Enter to add another contact or any other key to exit\n"
+echo -e "Would you like to add another contact? (y/n)\n"
 
 read var
 
-if [[ "$var" != "" ]]; then
+if [[ "$var" != "y" ]]; then
+    clear
 	echo "Thank you for using our services!"
 	break
 fi
+clear
 done
