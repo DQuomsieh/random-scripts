@@ -15,12 +15,11 @@ Master to do
 
 =======================
 - addcontacts:
-    1. key press after adding and not having to press enter with it
+    * key press after adding and not having to press enter with it
 
 
 - modifycontacts:
-    1. incorrect input of ID number in "modify contact info" does not yeild error 
+    * incorrect input of ID number in "modify contact info" does not yeild error 
 
 - searchcontacts;
-    1. search function returns name of contact with random numbers in front of it
-        - possible issue could be from mapfile comand
+    * search function returns name of contact with random numbers in front of it, possible issue could be from mapfile comand
