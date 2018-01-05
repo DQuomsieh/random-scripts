@@ -1,0 +1,107 @@
+#!/bin/bash
+
+option=0
+until [ "$option" = "4" ]; do
+	echo "1.) Delete a contact"
+	echo "2.) Delete all contacts"
+	echo "3.) Modify contact info"
+	echo "4.) Return"
+
+	echo -n "Please enter your choice: "
+	read option
+	echo ""
+	case $option in
+		1) 
+            clear
+			echo "Please enter ID number"
+            echo " "
+                        read id
+                        if [[ ${#id} -eq 4 && $id =~ ^[0-9]+$ ]]; then
+                                if grep -Fq "Contact ID: $id" contacts; then
+                                        sed -i.bak -e "/$id/I,+3 d" contacts >> contacts
+                                        echo -e "Contact with id: $id has been deleted\n"
+                                else
+                                        echo -e "ERROR: ID could not be found or entered incorrectly!\n"
+                                fi
+                        else
+                                echo -e "ERROR: Enter correct 4 digit ID number\n!"
+                        fi
+		;;
+		2) 
+			cp contacts contacts.bak
+                        > contacts
+                        clear
+                        echo -e "All contacts deleted!\n"
+		;;
+		3) 
+			option2=0
+			until [	"$option2" = "3" ]; do
+                clear
+				echo "1.) Phone Number"
+				echo "2.) Last Name"
+				echo "3.) Return"
+
+				echo -n "Please enter your choice: "
+				read option2
+				echo ""
+				case $option2 in
+					1)
+                        clear
+						echo -e "Please enter ID number of user to change\n"
+                                                read id2
+                                                if [[ ${#id2} -eq 4 && $id2 =~ ^[0-9]+$ ]]; then
+                                                        if grep -Fq "Contact ID: $id2" contacts; then
+                                                                oldnum=$(grep -n2 "$id2" contacts | grep Phone | cut -d: -f2 | xargs | cut -d' ' -f2)
+                                                                echo -e "Enter new Phone number in this format xxx-xxxx\n"
+                                                                read number
+                                                                if [[ "${number:3:1}" == "-" && ${number//-} =~ ^[0-9]+$ ]]; then
+                                                                                sed -i.bak "s/$oldnum/$number/g" contacts
+                                                                                echo -e "Phone number has been updated to $number\n!"
+                                                                else
+                                                                        echo -e "ERROR: Incorrect format for phone\n"
+                                                                fi
+                                                        else
+                                                                echo -e "ERROR: ID number does not exist!\n"
+                                                        fi
+                                                else
+                                                        echo -e "ERROR: Enter correct 4 digit ID number!\n"
+                                                fi
+                                        ;;
+					2)
+                        clear
+						echo "Please enter ID number of user to change"
+                                                read id2
+                                                if [[ ${#id2} -eq 4 && $id2 =~ ^[0-9]+$ ]]; then
+                                                        if grep -Fq "Contact ID: $id2" contacts; then
+                                                                echo Please enter Last name
+                                                                fullname=$(cat contacts | grep -n1 $id2 | tail -1 | cut -d: -f2 | xargs)
+								                                firstname=$(cat contacts | grep -n1 $id2 | tail -1 | cut -d: -f2 | xargs | cut -d' ' -f1)
+								                                read lname
+
+                                                                if [[ $lname =~ ^[A-Za-z]+$ ]]; then
+				                                   					newfullname="$firstname $lname"
+									                                cat contacts | sed -e "s/$fullname/$newfullname/" > tempcontacts
+									                                mv tempcontacts contacts
+                                                                    echo -e "Last name has been updated!\n"
+                                                                else
+                                                                        echo -e "ERROR: Last name must contain only character!\n"
+                                                                fi
+                                                        else
+                                                                echo -e "ERROR: ID number does not exist!\n"
+                                                        fi
+                                                else
+                                                        echo -e "ERROR: Enter correct 4 digit ID number!\n"
+                                                fi
+					;;	
+					3)
+						break
+					;;
+				esac
+			done		
+		;;
+		4)
+			break
+		;;
+		*) tput setf 3;echo "Please enter 1, 2 or 3";tput setf 3; 
+	esac
+done

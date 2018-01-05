@@ -1,0 +1,25 @@
+Master to do
+======================
+
+1) Flashing Error Sign
+
+2) Revising Previous Steps
+
+3) Email changes with name change
+
+4) Confirmation on Deletion and proper backup
+
+5) Names saved should be translated to small
+
+6) Rework entire interface and provide good comments 
+
+=======================
+- addcontacts:
+    * key press after adding and not having to press enter with it
+
+
+- modifycontacts:
+    * incorrect input of ID number in "modify contact info" does not yeild error 
+
+- searchcontacts;
+    * search function returns name of contact with random numbers in front of it, possible issue could be from mapfile comand
