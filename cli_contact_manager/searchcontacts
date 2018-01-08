@@ -10,6 +10,7 @@ until [ "$option" = "3" ]; do
 	read option
 	case $option in
 		1) 
+            clear
 			echo -e "Pease enter ID number\n"
 			read id
 			if [[ ${#id} -eq 4 && $id =~ ^[0-9]+$ ]]; then
@@ -25,6 +26,7 @@ until [ "$option" = "3" ]; do
 		;;
 		2)
 			option2=0
+            clear
 			until [ "$option2" = "4" ]; do
 				echo "1) Search by First Name"
 				echo "2) Search by Last Name"
