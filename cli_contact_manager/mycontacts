@@ -3,6 +3,8 @@
 optionmain=0
 until [ "$optionmain" = "4" ]; do
     clear
+    echo welcome to cli contact manager
+    echo ===============================================
 	echo "1) Add Contact"
 	echo "2) Modify Contact"
 	echo "3) Search Contacts"
@@ -10,8 +12,6 @@ until [ "$optionmain" = "4" ]; do
 	
 	echo -n "Please enter your choice: "
 	read optionmain
-	echo ""
-    echo "==============================================="
 	case $optionmain in
 		1)
             clear
