@@ -28,6 +28,7 @@ command_not_found_handle () {
         "Are you even trying?"
         "let me guess, you use arch?"
         "Pro tip: type a valid command!"
+        "go back to windows"
     )
 
     # Seed "random" generator
