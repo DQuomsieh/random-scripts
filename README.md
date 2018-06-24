@@ -1,3 +1,9 @@
-# random-scripts
+## random-scripts
 
+Current Scripts
+```
+rename
+weather
+contact-manager
+```
 
